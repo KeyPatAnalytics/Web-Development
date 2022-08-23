@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Christmas CountDown</title>
+    </head>
+    <body>
+        <style type="text/css">
+            @font-face {
+                font-family: 'Digital';
+                src: url('fonts/digital-7.ttf') 
+                    format('truetype');
+                font-weight: bold;
+            }
+            body{
+                background: #ddd;
+            }
+            .countDownContainer{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                text-align: center;
+                background: #ddd;
+                border: 1px solid #999;
+                padding: 10px;
+                box-shadow: 0 0 5px 3px #ccc;
+            }
+            #info{
+                font-size: 80px;
+                color: #717091;
+            }
+            #numbers{
+                font-size: 100px;
+                font-family: 'Digital', sans-serif;
+                color: 	#3B35DE;
+                text-shadow: 1px;
+            } 
+        </style>
+        <table class="countDownContainer">
+            <tr id="info">
+                <td colspan="4"> Dora Barbara Birthday </td>
+            </tr>
+            <tr class="info", id="numbers">
+                <td id="days">120</td>
+                <td id="hours">20</td>
+                <td id="minutes">10</td>
+                <td id="seconds">7</td>
+            </tr>
+            <tr style="color: #3B35DE">
+                <td>Days</td>
+                <td>Hours</td>
+                <td>Minutes</td>
+                <td>Seconds</td>
+            </tr>
+        </table>
+        
+        <script>
+            function countClock(){
+                
+                var now = new Date();
+                var eventDate = new Date(2022,7,27);
+                
+                var nowTime = now.getTime();
+                var eventTime = eventDate.getTime();
+                
+                var remTime = eventTime - nowTime;// remTime will be in milliseconds
+                
+                var seconds = Math.floor(remTime/1000);
+                var minutes = Math.floor(seconds/60);
+                var hours = Math.floor(minutes/60);
+                var days = Math.floor(hours/24);  
+                
+                hours %= 24;
+                minutes %= 60;
+                seconds %= 60;
+                
+                hours = (hours<10)? "0" + hours:hours;
+                minutes = (minutes<10)? "0" + minutes:minutes;
+                seconds = (seconds<10)? "0" + seconds:seconds;
+                
+                document.getElementById("days").textContent = days;
+                document.getElementById("days").innerText = days;
+                
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+                
+                setTimeout(countClock,1000);
+                
+            /*var now = Date(millSeconds); var now = Date(dateString);var now = Date(year,month,day,hour,min,sec,ms);*/
+            }
+            
+            countClock();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
